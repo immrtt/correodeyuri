@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<title>Agregar Trabajador</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<style>
+  body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 1200px;
+  }
+
+  .navbar {
+      background-color: #333;
+  }
+
+  .navbar-brand,
+  .nav-link {
+      color: #fff !important;
+  }
+
+  .main-container {
+      display: flex;
+      height: 170vh;
+  }
+
+  .left-pane {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('{{ url_for("static", filename= "imagen/2323.jpg") }}') no-repeat center center;
+      background-size: cover;
+  }
+
+  .right-pane {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+  }
+
+  .card {
+      width: 80%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-header {
+      font-size: 2rem;
+  }
+
+  .card-title {
+      margin-bottom: 20px;
+  }
+
+  /* Estilos adicionales para el formulario */
+  .form-container {
+      width: 100%;
+      height: 500px;
+      max-width: 400px;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .form-container h1,
+  .form-container h2 {
+      text-align: center;
+      margin-top: 20px;
+  }
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="#">El correo de Yuri</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/search">Personal</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/registro.prin">Inicia sesión</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <div class="left-pane"></div>
+  <div class="right-pane">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <form action="/add_trabajador" method="POST">
+              <fieldset>
+                <legend>Agregar empleado</legend>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="t-id" name="t-id" placeholder="ID" disabled>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="t-rut" name="t-rut" placeholder="Rut">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="t-nombres" name="t-nombres" placeholder="Nombres">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="t-apellidos" name="t-apellidos" placeholder="Apellidos">
+                </div>
+                <select class="form-select" id="t-sexo" name="t-sexo" aria-label="Default select example">
+                    <label for="t-sexo" class="form-label">Sexo</label>
+                    <option selected disabled>Sexo...</option>
+                    <option value="F">Femenino</option>
+                    <option value="M">Masculino</option>
+                    <option value="Otro">Otro...</option>
+                <div class="form-group"> Fecha de Nacimiento
+                  <input type="date" class="form-control" id="t-fechanacimiento" name="t-fechanacimiento" placeholder="Fecha de nacimiento">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="t-direccion" name="t-direccion" placeholder="Dirección">
+                </div>
+                <!--CARGO-->
+                <select class="form-select" id="t-cargo" name="t-cargo" aria-label="Default select example">
+                  <label for="t-cargo" class="form-label">Cargo</label>
+                  <option selected disabled>Cargo...</option>
+                  <option value="Gerente General">Gerente General</option>
+                  <option value="Director/a de Operaciones">Director/a de Operaciones</option>
+                  <option value="Director/a de Finanzas">Director/a de Finanzas</option>
+                  <option value="Asistente Administrativo/a">Asistente Administrativo/a</option>
+                  <option value="Coordinador/a de oficina">Coordinador/a de Oficina</option>
+                  <option value="Gerente Recursus Humanos">Gerente de Recursos Humanos</option>
+                  <option value="Ingeniero/ de Sistemas">Ingeniero/a de Sistemas</option>
+                  <option value="Ejecutivo de Ventas">Ejecutivo/a de Ventas</option>
+                  <option value="Marketing Digital">Marketing Digital</option>
+                  <option value="Gerente de Relaciones con Clientes">Gerente de Relaciones con Clientes</option>
+                  <option value="Coordinador/a Logistico">Coordinador/a Logistico</option>
+                  <option value="Supervisor de Producción">Supervisor de Producción</option>
+                  <option value="Gerente de Operaciones">Gerente de Operaciones</option>
+                  <option value="Contador">Contador</option>
+                  <option value="Analista de Finanzas">Analista de Finanzas</option>
+                  <option value="Auditor/a Interno/a">Auditor/a Interno</option>
+                  <option value="Abogado/a Corporativo/a">Abogado/a Corporativo/a</option>
+                  <option value="Asistente Legal">Asistente Legal</option>
+                  <option value="Instructor/a de Capacitación">Instructor/a de Capacitación</option>
+                  <option value="Coordinador de Formación">Coordinador/a de Formación</option>
+
+                </select>
+                  <!--AREA-->
+                  <select class="form-select" id="t-area" name="t-area" aria-label="Default select example">
+                    <label for="t-area" class="form-label">Area</label>
+                    <option selected disabled>Area...</option>
+                    <option value="Ejecutiva">Ejecutiva</option>
+                    <option value="Administración">Administración</option>
+                    <option value="Tecnología de la Información (TI)">Tecnología de la Información (TI)</option>
+                    <option value="Recursos Humanos">Recursos Humanos</option>
+                    <option value="Operaciones">Operaciones</option>
+                    <option value="Ventas y Marketing">Ventas y Marketing</option>
+                    <option value="Finanzas">Finanzas</option>
+                    <option value="Legal y Cumplimiento">Legal y Cumplimiento</option>
+                    <option value="Desarrollo de Producto">Desarrollo de Producto</option>
+                    <option value="Educación y Formación">Educación y Formación</option>
+                    <option value="Servicios al Cliente">Servicios al Cliente</option>
+                </select>
+                <!--DEPARTAMENTO-->
+                <select class="form-select" id="t-depto" name="t-depto" aria-label="Default select example">
+                  <label for="t-depto" class="form-label">Departamento</label>
+                  <option selected disabled>Departamento...</option>
+                  <option value="Administración">Administración</option>
+                  <option value="Tecnología de la Información (TI)">Tecnología de la Información (TI)</option>
+                  <option value="Recursos Humanos">Recursos Humanos</option>
+                  <option value="Operaciones">Operaciones</option>
+                  <option value="Ventas y Marketing">Ventas y Marketing</option>
+                  <option value="Finanzas">Finanzas</option>
+                  <option value="Legal y Cumplimiento">Legal y Cumplimiento</option>
+                  <option value="Desarrollo de Producto">Desarrollo de Producto</option>
+                  <option value="Educación y Formación">Educación y Formación</option>
+                  <option value="Servicios al Cliente">Servicios al Cliente</option>
+              </select>
+                <div class="form-group">
+                  <input type="number" class="form-control" id="t-telefono" name="t-telefono" placeholder="Telefono">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="t-correo" name="t-correo" placeholder="Correo">
+                </div>
+                <div class="form-group"> Fecha de Ingreso
+                  <input type="date" class="form-control" id="t-fechaingreso" name="t-fechaingreso" placeholder="Fecha de ingreso">
+                </div>
+                <legend>Contactos de Emergencia</legend>
+                <div class="form-group">
+                 <input type="text" class="form-control" id="c-nombres" name="c-nombres" placeholder="Nombres">
+                </div>
+                <div class="form-group">
+                <input type="text" class="form-control" id="c-apellidos" name="c-apellidos" placeholder="Apellidos">
+                </div>
+                <div class="form-group">
+                  <select class="form-select" id="c-parentesco" name="c-parentesco" aria-label="Default select example">
+                    <label for="c-parentesco" class="form-label">Parentesco</label>
+                    <option selected disabled>Parentesco...</option>
+                    <option value="Esposo/a">Esposo/a</option>
+                    <option value="Hijo/a">Hijo/a</option>
+                    <option value="Madre">Madre</option>
+                    <option value="Padre">Padre</option>
+                    <option value="Sobrino/a">Sobrino/a</option>
+                    <option value="Hermano/a">Hermano/a</option>
+                  </select>
+                <div class="form-group">
+                <input type="number" class="form-control" id="c-telefono" name="c-telefono" placeholder="Telefono">
+                </div>
+
+            <legend>Cargas Familiares</legend>
+            <div id="cargas-familiares">
+              <div class="form-group carga-familiar">
+                <input type="text" class="form-control" id="ca-nombres" name="ca-nombres" placeholder="Nombres">
+              </div>
+              <div class="form-group carga-familiar">
+                <input type="text" class="form-control" id="ca-apellidos" name="ca-apellidos" placeholder="Apellidos">
+              </div>
+              <div class="form-group carga-familiar">
+                <select class="form-select" id="ca-parentesco" name="ca-parentesco" aria-label="Default select example">
+                  <label for="ca-parentesco" class="form-label">Parentesco</label>
+                  <option selected disabled>Parentesco...</option>
+                  <option value="Esposo/a">Esposo/a</option>
+                  <option value="Hijo/a">Hijo/a</option>
+                  <option value="Madre">Madre</option>
+                  <option value="Padre">Padre</option>
+                  <option value="Sobrino/a">Sobrino/a</option>
+                  <option value="Hermano/a">Hermano/a</option>
+                </select>
+              <div class="form-group carga-familiar">
+                <input type="number" class="form-control" id="ca-edad" name="ca-edad" placeholder="Edad">
+              </div>
+              <div class="form-group carga-familiar">
+                <select class="form-select" id="ca-sexo" name="ca-sexo" aria-label="Default select example">
+                  <label for="ca-sexo" class="form-label">Departamento</label>
+                  <option selected disabled>Sexo...</option>
+                  <option value="F">Femenino</option>
+                  <option value="M">Masculino</option>
+                  <option value="Otro">Otro...</option>
+                </select>
+              </div>
+              <div class="form-group carga-familiar">
+                <input type="number" class="form-control" id="ca-telefono" name="ca-telefono" placeholder="Telefono">
+              </div>
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="agregarCargaFamiliar()">Agregar otra carga familiar</button>
+
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

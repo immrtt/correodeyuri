@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/js/script.js"></script>
+    <title>Detalles del Trabajador</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="mb-4">Datos del Trabajador</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Información Personal</h5>
+                <p><strong>ID:</strong> {{ trabajador.id_empleado }}</p>
+                <p><strong>RUT:</strong> {{ trabajador.rut }}</p>
+                <p><strong>Nombres:</strong> {{ trabajador.nombres }}</p>
+                <p><strong>Apellidos:</strong> {{ trabajador.apellidos }}</p>
+                <p><strong>Sexo:</strong> {{ trabajador.sexo }}</p>
+                <p><strong>Teléfono:</strong> {{ trabajador.telefono }}</p>
+                <p><strong>Fecha de Nacimiento:</strong> {{ trabajador.fecha_nacimiento }}</p>
+                <p><strong>Fecha de Ingreso:</strong> {{ trabajador.fecha_ingreso }}</p>
+                <p><strong>Correo:</strong> {{ trabajador.correo }}</p>
+                <p><strong>Área:</strong> {{ trabajador.nombre_area }}</p>
+                <p><strong>Departamento:</strong> {{ trabajador.nombre_departamento }}</p>
+                <p><strong>Cargo:</strong> {{ trabajador.nombre_cargo }}</p>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Cargas Familiares</h5>
+                {% if trabajador.cargas_familiares %}
+                    {% for carga in trabajador.cargas_familiares %}
+                        <p><strong>Nombres:</strong> {{ carga.nombres }}</p>
+                        <p><strong>Apellidos:</strong> {{ carga.apellidos }}</p>
+                        <p><strong>Edad:</strong> {{ carga.edad }}</p>
+                        <p><strong>Sexo:</strong> {{ carga.sexo }}</p>
+                        <p><strong>Parentesco:</strong> {{ carga.parentesco }}</p>
+                        <hr>
+                    {% endfor %}
+                {% else %}
+                    <p>No hay cargas familiares registradas.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Contacto de Emergencia</h5>
+                {% if trabajador.contactos_emergencia %}
+                    {% for contacto in trabajador.contactos_emergencia %}
+                        <p><strong>Nombres:</strong> {{ contacto.nombres }}</p>
+                        <p><strong>Apellidos:</strong> {{ contacto.apellidos }}</p>
+                        <p><strong>Parentesco:</strong> {{ contacto.parentesco }}</p>
+                        <p><strong>Teléfono:</strong> {{ contacto.telefono }}</p>
+                        <hr>
+                    {% endfor %}
+                {% else %}
+                    <p>No hay información de contacto de emergencia registrada.</p>
+                {% endif %}
+            </div>
+        </div>
+</body>
+</html>

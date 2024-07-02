@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/js/script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Inicio - El correo de Yuri</title>
+    <style>
+body {
+   background-image: url('{{ url_for("static", filename= "imagen/banner.png") }}');
+   background-size: cover;
+ background-position: center;
+ height: 100vh;
+display: flex;
+justify-content: center;
+ align-items: center;
+ background-color: rgba(63, 62, 62, 0.5); 
+ background-blend-mode: darken; 
+}
+.login-container {
+   background-color: rgba(255, 255, 255, 0.9);
+   padding: 20px;
+ border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+width: 400px;
+}
+ .login-container h4 {
+text-align: center;
+ margin-bottom: 20px;
+}
+</style>
+
+
+</head>
+<body>
+  <div class="login-container">
+    <h4>Inicia como administrador</h4>
+     <form id="loginForm" action="{{ url_for('admin_login') }}" method="POST" class="was-validated">
+      <div class="mb-3 mt-3">
+      <label for="uname" class="form-label">Usuario:</label>
+        <input type="text" class="form-control" id="uname" placeholder="Nombre de Usuario" name="uname" required>
+        <div class="valid-feedback">Valido.</div>
+        <div class="invalid-feedback">Por favor rellene este campo.</div>
+  </div>
+        <div class="mb-3">
+          <label for="pwd" class="form-label">Contraseña:</label>
+          <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pswd" required>
+          <div class="valid-feedback">Valido.</div>
+           <div class="invalid-feedback">Por favor rellene este campo.</div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Iniciar sesion</button>
+  </form>
+      </div>
+
+<script>
+  
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+event.preventDefault(); 
+      var username = document.getElementById('uname').value;
+         var password = document.getElementById('pwd').value;
+      if (username === 'admin28' && password === 'Admin28*') {
+        alert('Inicio de sesión exitoso.');
+         window.location.href = '/admin_pag';
+         } else {
+          alert('Usuario o contraseña incorrectos.');
+            }
+        });
+ </script>
+</body>
+</html>
+

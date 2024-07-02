@@ -1,0 +1,74 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Empleado</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light"> 
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Modificar Empleado</h1>
+        <form id="updateForm" action="/modificar/{{ trabajador.rut }}" method="POST">
+            <input type="hidden" name="t-id" value="{{ trabajador.id_empleado }}">
+            
+            <div class="form-group">
+                <label for="rut">RUT:</label>
+                <input type="text" class="form-control" id="t-rut" name="t-rut" value="{{ trabajador.rut }}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="nombres">Nombres:</label>
+                <input type="text" class="form-control" id="t-nombres" name="t-nombres" value="{{ trabajador.nombres }}" required>
+            </div>
+            <div class="form-group">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" class="form-control" id="t-apellidos" name="t-apellidos" value="{{ trabajador.apellidos }}" required>
+            </div>
+            <div class="form-group">
+                <label for="sexo">Sexo:</label>
+                <input type="text" class="form-control" id="t-sexo" name="t-sexo" value="{{ trabajador.sexo }}" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" class="form-control" id="t-telefono" name="t-telefono" value="{{ trabajador.telefono }}" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" class="form-control" id="t-fechanacimiento" name="t-fechanacimiento" value="{{ trabajador.fecha_nacimiento }}" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha_ingreso">Fecha de Ingreso:</label>
+                <input type="date" class="form-control" id="t-fechaingreso" name="t-fechaingreso" value="{{ trabajador.fecha_ingreso }}" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" class="form-control" id="t-correo" name="t-correo" value="{{ trabajador.correo }}" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre_area">Área:</label>
+                <input type="text" class="form-control" id="t-area" name="t-area" value="{{ trabajador.nombre_area }}" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre_departamento">Departamento:</label>
+                <input type="text" class="form-control" id="t-depto" name="t-depto" value="{{ trabajador.nombre_departamento }}" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre_cargo">Cargo:</label>
+                <input type="text" class="form-control" id="t-cargo" name="t-cargo" value="{{ trabajador.nombre_cargo }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
